@@ -1,1 +1,40 @@
-<p>add-edit-contact works!</p>
+<div mat-dialog-title>
+    <h1>Add Contact</h1>
+  </div>
+  <form [formGroup]="Contactform" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+      <p>
+        <mat-form-field>
+          <mat-label> Contact name</mat-label>
+          <input type="text" matInput formControlName="name" />
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>email</mat-label>
+          <input type="email" matInput formControlName="email" />
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>Phone number</mat-label>
+          <input
+            matInput
+            type="tel"
+            placeholder="XX/XXXXXX"
+            pattern="[0-9]{2}/[0-9]{6}"
+            formControlName="phoneNumber"
+          />
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+      </p>
+    </div>
+  
+    <div mat-dialog-actions class="action">
+      <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+      <button mat-raised-button  color="primary" type="submit" [disabled]=" Contactform.untouched || (!Contactform.valid && Contactform.touched)">ADD</button>
+    </div>
+  </form>
+  
