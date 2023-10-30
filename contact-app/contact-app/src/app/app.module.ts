@@ -25,6 +25,7 @@ import { DataTableComponent } from './components/data-table/data-table.component
     HeaderComponent,
     AddEditContactComponent,
     ContactsComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,

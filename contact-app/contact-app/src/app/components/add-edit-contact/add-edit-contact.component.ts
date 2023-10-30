@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GlobalVariables } from 'src/app/globalvariables.ts/global.variables';
+import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class AddEditContactComponent implements OnInit{
   
   constructor(private fb: FormBuilder,
     private contactService: ContactService,
-    private dialog_ref: MatDialogRef<AddEditContactComponent>){}
+    private dialog_ref: MatDialogRef<AddEditContactComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Contact){}
 
     ngOnInit(): void {
       this.Contactform = this.fb.group({
@@ -27,6 +29,7 @@ export class AddEditContactComponent implements OnInit{
         ]),
         phoneNumber: new FormControl('', Validators.required),
       });
+      this.Contactform.patchValue(this.data);
     }
 
     onCancel() {
@@ -34,9 +37,15 @@ export class AddEditContactComponent implements OnInit{
     }
 
     onSubmit() {
-      
+      if (this.data) {
+        this.contactService.updateContact(this.Contactform.value);
+        alert('Employee Updated successfully');
+      } else {
         this.contactService.addContact(this.Contactform.value);
         alert('Employee added successfully');
       }
+      this.Contactform.reset();
+      this.dialog_ref.close();
+    }
      
 }

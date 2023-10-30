@@ -1,0 +1,19 @@
+table {
+    width: 80%;
+    margin: 20px auto;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  .data-table{
+    width: 80%;    
+  }
+
+  .d-flex{
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
