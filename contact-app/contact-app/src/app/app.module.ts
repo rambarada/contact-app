@@ -18,6 +18,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { HeaderComponent } from './components/header/header.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
+import {AngularFireModule} from '@angular/fire/compat'
+import { environment } from 'src/environments/environments';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { DataTableComponent } from './components/data-table/data-table.component
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent],
