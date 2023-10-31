@@ -32,11 +32,6 @@ export class ContactService {
     return this.contactsSubject.asObservable();
   }
   
-  getContactsArray(){
-    return this.contacts
-  }
-    
-  
   updateContact(contact: Contact) {
     var foundIndex = this.contacts.findIndex((x) => x.id == contact.id);
     this.contacts[foundIndex] = contact;

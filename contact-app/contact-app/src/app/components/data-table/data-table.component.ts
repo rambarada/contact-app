@@ -5,11 +5,13 @@ import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { AddEditContactComponent } from '../add-edit-contact/add-edit-contact.component';
 import { ContactService } from 'src/app/services/contact.service';
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
 
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.css']
+  styleUrls: ['./data-table.component.css'],
+  providers:[FilterPipe]
 })
 export class DataTableComponent implements OnInit {
 
@@ -18,7 +20,7 @@ export class DataTableComponent implements OnInit {
   contactsSub !: Subscription;
   displayedColumns: string[] = ['id', 'name', 'email', 'phone number','action'];
 
-  constructor(private contactService : ContactService,private _dialog:MatDialog){}
+  constructor(private contactService : ContactService,private _dialog:MatDialog,private filterPipe : FilterPipe){}
 
   ngOnInit(): void {
 
@@ -32,7 +34,9 @@ export class DataTableComponent implements OnInit {
 
    applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
+    //console.log(filterValue);
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    //console.log("pipe output:",this.filterPipe.transform(this.dataSource,filterValue.trim().toLowerCase()));
   }
 
   onDeleteContact(id:number){
