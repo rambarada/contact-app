@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData, doc,updateDoc,deleteDoc,addDoc } from '@angular/fire/firestore';
 import { Contact } from '../models/contact.model';
+import { randEmail, randFullName,randPhoneNumber } from '@ngneat/falso';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,21 @@ export class FirestoreService {
   createContact(contact:Contact){
     
     const collectionInstance = collection(this.firestore,'contact');
-    addDoc(collectionInstance,contact);
+    const newContact = {
+      name: contact.name,
+      email: contact.email,
+      phoneNumber : contact.phoneNumber
+    }
+    addDoc(collectionInstance,newContact);
+  }
+
+  createRandomContacts(){
+
+    const collectionInstance = collection(this.firestore,'contact');
+    for(var i =0; i<5; i++){
+      const contact = { email: randEmail(), name: randFullName(),phoneNumber: randPhoneNumber() };
+      addDoc(collectionInstance,contact);
+    }
+    
   }
 }

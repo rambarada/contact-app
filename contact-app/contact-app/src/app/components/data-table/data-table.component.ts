@@ -24,6 +24,7 @@ export class DataTableComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.firestoreService.createRandomContacts();
    this.contactsSub = this.firestoreService.getContacts().subscribe((contacts)=>{
    this.dataSource = new MatTableDataSource(contacts);
    })
