@@ -56,7 +56,7 @@ export class FirestoreService {
 
     const collectionInstance = collection(this.firestore,'contact');
     for(var i =0; i<5; i++){
-      const contact = { email: randEmail(), name: randFullName(),phoneNumber: randPhoneNumber() };
+      const contact = { email: randEmail(), name: randFullName(),phoneNumber:randPhoneNumber({ countryCode: 'LB' }) };
       addDoc(collectionInstance,contact);
     }
     
