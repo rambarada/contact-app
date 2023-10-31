@@ -4,54 +4,47 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { AddEditContactComponent } from '../add-edit-contact/add-edit-contact.component';
-import { ContactService } from 'src/app/services/contact.service';
-import { FilterPipe } from 'src/app/pipes/filter.pipe';
+import { Firestore, collection, collectionData,updateDoc,doc } from '@angular/fire/firestore';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css'],
-  providers:[FilterPipe]
+  providers:[]
 })
 export class DataTableComponent implements OnInit {
 
   dataSource:any = []
   //contacts:Contact[] = []
   contactsSub !: Subscription;
-  displayedColumns: string[] = ['id', 'name', 'email', 'phone number','action'];
+  displayedColumns: string[] = [ 'name', 'email', 'phone number','action'];
 
-  constructor(private contactService : ContactService,private _dialog:MatDialog,private filterPipe : FilterPipe){}
+  constructor(private firestoreService : FirestoreService,private _dialog:MatDialog,private firestore : Firestore){}
 
   ngOnInit(): void {
 
-    console.log("entered!")
-    this.contactsSub = this.contactService.getContacts().subscribe((contacts:Contact[])=>{
-     // this.contacts = contacts;
-     this.dataSource = new MatTableDataSource(contacts);
-    })
+   this.contactsSub = this.firestoreService.getContacts().subscribe((contacts)=>{
+   this.dataSource = new MatTableDataSource(contacts);
+   })
     
    }
 
    applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    //console.log(filterValue);
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    //console.log("pipe output:",this.filterPipe.transform(this.dataSource,filterValue.trim().toLowerCase()));
   }
 
-  onDeleteContact(id:number){
+  onDeleteContact(id:string){
 
-    this.contactService.deleteContact(id);
+    this.firestoreService.deleteContact(id)
+
   }
   onUpdateContact(data:Contact){
-    
-    this._dialog.open(AddEditContactComponent,{
-      data
-    });
 
+    this._dialog.open(AddEditContactComponent,{data});
   }
-
-
+  
   ngOnDestroy(): void {
 
     this.contactsSub.unsubscribe();

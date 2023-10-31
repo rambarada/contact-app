@@ -7,7 +7,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -18,8 +18,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { HeaderComponent } from './components/header/header.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
-import {AngularFireModule} from '@angular/fire/compat'
-import { environment } from 'src/environments/environments';
+import { environment } from 'src/environment.ts/environments';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideFirebaseApp,initializeApp } from '@angular/fire/app';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { environment } from 'src/environments/environments';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     MatSliderModule,
     MatButtonModule,
     MatInputModule,
@@ -44,7 +46,8 @@ import { environment } from 'src/environments/environments';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent],

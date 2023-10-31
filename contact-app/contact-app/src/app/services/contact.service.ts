@@ -12,22 +12,22 @@ export class ContactService {
   }
   contactId:number = 3;
   contacts: Contact[]=[
-    {id:1,name:'ram',email:'ram@gmail.com',phoneNumber:"71/123456"},
-    {id:2,name:'adam',email:'adam@gmail.com',phoneNumber:"70/123456"}
+    {id:'1',name:'ram',email:'ram@gmail.com',phoneNumber:"71/123456"},
+    {id:'2',name:'adam',email:'adam@gmail.com',phoneNumber:"70/123456"}
   ];
   private contactsSubject = new BehaviorSubject<Contact[]>(this.contacts);
   constructor() {}
 
   addContact(newContact: Contact): void {
-    newContact.id = this.contactId++;
+    //newContact.id = this.contactId++;
     this.contacts.push(newContact);
     console.log(this.contacts)
     this.notifyChange()
   }
-  deleteContact(id: number): void {
-    this.contacts = this.contacts.filter((c) => c.id !== id);
-    this.notifyChange();
-  }
+ // deleteContact(id: number): void {
+   // this.contacts = this.contacts.filter((c) => c.id !== id);
+   // this.notifyChange();
+ // }
   getContacts(): Observable<Contact[]> {
     return this.contactsSubject.asObservable();
   }

@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GlobalVariables } from 'src/app/globalvariables.ts/global.variables';
 import { Contact } from 'src/app/models/contact.model';
-import { ContactService } from 'src/app/services/contact.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-add-edit-contact',
@@ -15,7 +15,7 @@ export class AddEditContactComponent implements OnInit{
   Contactform!: FormGroup;
   
   constructor(private fb: FormBuilder,
-    private contactService: ContactService,
+    private firestoreService : FirestoreService,
     private dialog_ref: MatDialogRef<AddEditContactComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Contact){}
 
@@ -38,10 +38,10 @@ export class AddEditContactComponent implements OnInit{
 
     onSubmit() {
       if (this.data) {
-        this.contactService.updateContact(this.Contactform.value);
+        this.firestoreService.updateContact(this.Contactform.value);
         alert('Employee Updated successfully');
       } else {
-        this.contactService.addContact(this.Contactform.value);
+        this.firestoreService.createContact(this.Contactform.value);
         alert('Employee added successfully');
       }
       this.Contactform.reset();
