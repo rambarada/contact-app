@@ -24,6 +24,8 @@ import { provideFirebaseApp,initializeApp } from '@angular/fire/app';
 import {Auth,getAuth, provideAuth} from '@angular/fire/auth';
 import { LoginComponent } from './components/login/login.component';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
     ContactsComponent,
     DataTableComponent,
     LoginComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
     FormsModule,
     MatSliderModule,
     MatButtonModule,
+    MatMenuModule,
     MatInputModule,
     MatIconModule,
     ReactiveFormsModule,

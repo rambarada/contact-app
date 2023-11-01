@@ -1,7 +1,24 @@
 <mat-toolbar color="primary">
     <span>Contacts App</span>
     <span class="example-spacer"></span>
-    <button mat-raised-button (click)="onAddEditContactform()">
-      ADD CONTACT
-    </button>
+    <ng-container *ngIf="authService.currentUser$ | async as user; else login">
+      <button mat-button class="padding-right" [mat-menu-trigger-for]="userMenu">
+        <mat-icon>account_circle</mat-icon>
+        {{user.displayName}}
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <button mat-raised-button (click)="onAddEditContactform()">
+        ADD CONTACT
+      </button>
+    </ng-container>
+    <ng-template #login>
+      <button mat-raised-button routerLink="/sign-up" >
+        Sign up
+      </button>
+    </ng-template>
+   
+    
   </mat-toolbar>
+<mat-menu #userMenu="matMenu">
+<button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
