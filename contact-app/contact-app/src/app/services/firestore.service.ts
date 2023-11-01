@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData, doc,updateDoc,deleteDoc,addDoc } from '@angular/fire/firestore';
 import { Contact } from '../models/contact.model';
 import { randEmail, randFullName,randPhoneNumber } from '@ngneat/falso';
+import {AngularFireAuth} from '@angular/fire/compat/auth'
+import { Auth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
 
-  constructor(private firestore : Firestore) { }
+  constructor(private firestore : Firestore,private auth:Auth ) { }
 
 
   getContacts(){
@@ -55,10 +57,11 @@ export class FirestoreService {
   createRandomContacts(){
 
     const collectionInstance = collection(this.firestore,'contact');
-    for(var i =0; i<5; i++){
+    for(var i =0; i<2; i++){
       const contact = { email: randEmail(), name: randFullName(),phoneNumber:randPhoneNumber({ countryCode: 'LB' }) };
       addDoc(collectionInstance,contact);
     }
     
   }
+ 
 }

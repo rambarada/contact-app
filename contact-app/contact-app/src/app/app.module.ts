@@ -21,6 +21,9 @@ import { DataTableComponent } from './components/data-table/data-table.component
 import { environment } from 'src/environment.ts/environments';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideFirebaseApp,initializeApp } from '@angular/fire/app';
+import {Auth,getAuth, provideAuth} from '@angular/fire/auth';
+import { LoginComponent } from './components/login/login.component';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { provideFirebaseApp,initializeApp } from '@angular/fire/app';
     HeaderComponent,
     AddEditContactComponent,
     ContactsComponent,
-    DataTableComponent
+    DataTableComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,8 +50,12 @@ import { provideFirebaseApp,initializeApp } from '@angular/fire/app';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    //AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideAuth(()=>getAuth()),
+    HotToastModule.forRoot()
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

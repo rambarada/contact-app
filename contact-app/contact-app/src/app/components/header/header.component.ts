@@ -14,5 +14,6 @@ export class HeaderComponent {
 
   onAddEditContactform() {
     this._dialog.open(AddEditContactComponent);
+    
   }
 }
