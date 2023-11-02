@@ -1,0 +1,33 @@
+{
+"header":{
+    "title":"Contact App",
+    "btn-sign-up":"Sign Up",
+    "btn-add":"Add Contact",
+    "btn-logout":"Logout"
+},
+"login":{
+
+    "title":"login",
+    "email":"email",
+    "password":"password",
+    "name":"name",
+    "question":"New to our platform?",
+    "confirm_password":"confirm password",
+    "email_required":"Email is required.",
+    "password_required":"Password is required.",
+    "name_required":"name is required.",
+    "confirm_password_required":"Confirm your password."
+},
+"add-edit":{
+    "title":"Add Contact",
+    "name":"Contact name",
+    "email":"email",
+    "phone_number":"Phone number",
+    "btn-cancel":"cancel",
+    "btn-add":"add",
+    "btn-update":"Update"
+}
+
+
+
+}

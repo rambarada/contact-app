@@ -22,6 +22,8 @@ import {getAuth, provideAuth} from '@angular/fire/auth';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslocoRootModule } from './transloco-root.module';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import {MatMenuModule} from '@angular/material/menu';
     //AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    provideAuth(()=>getAuth())
+    provideAuth(()=>getAuth()),
+    HttpClientModule,
+    TranslocoRootModule
     
   ],
   providers: [],

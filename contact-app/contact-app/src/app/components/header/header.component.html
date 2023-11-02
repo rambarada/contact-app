@@ -1,5 +1,11 @@
-<mat-toolbar color="primary">
-    <span>Contacts App</span>
+<ng-container *transloco="let text;">
+  <mat-toolbar color="primary">
+    <span>{{text('header.title')}}
+      
+    </span>
+    <button mat-button class="padding-right" [mat-menu-trigger-for]="languageMenu">
+      <mat-icon>expand_more</mat-icon>
+    </button>
     <span class="example-spacer"></span>
     <ng-container *ngIf="authService.currentUser$ | async as user; else login">
       <button mat-button class="padding-right" [mat-menu-trigger-for]="userMenu">
@@ -8,17 +14,25 @@
         <mat-icon>expand_more</mat-icon>
       </button>
       <button mat-raised-button (click)="onAddEditContactform()">
-        ADD CONTACT
+       {{text('header.btn-add')}}
       </button>
     </ng-container>
     <ng-template #login>
-      <button mat-raised-button routerLink="/sign-up" >
-        Sign up
+      <button mat-raised-button class="margin-right" routerLink="/sign-up" >
+        {{text('header.btn-sign-up')}}
       </button>
+      <button mat-raised-button routerLink="/login" >
+        {{text('login.title')}}
+      </button>
+      
     </ng-template>
    
     
   </mat-toolbar>
 <mat-menu #userMenu="matMenu">
-<button mat-menu-item (click)="logout()">Logout</button>
+<button mat-menu-item (click)="logout()">{{text('header.btn-logout')}}</button>
 </mat-menu>
+<mat-menu #languageMenu="matMenu">
+  <button mat-menu-item (click)="onChangeLang()">change language</button>
+  </mat-menu>
+</ng-container>

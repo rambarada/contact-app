@@ -10,6 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslocoRootModule } from '../transloco-root.module';
 
 
 console.warn("contacts module loaded lazily");
@@ -26,7 +27,8 @@ console.warn("contacts module loaded lazily");
     MatTableModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    TranslocoRootModule
   ]
 })
 export class ContactsModule { }

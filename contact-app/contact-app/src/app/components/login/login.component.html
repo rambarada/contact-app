@@ -1,19 +1,22 @@
-<div class="form-container mat-elevation-z5">
-    <h1 class="text-center">Login</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-        <mat-form-field>
-            <input type="text" matInput placeholder="email" formControlName="username">
-            <mat-error *ngIf="email?.errors?.['required']" >email is required</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <input type="password" matInput placeholder="password" formControlName="password">
-            <mat-error *ngIf="password?.errors?.['required']">password is required</mat-error>
-        </mat-form-field>
-        <div class="text-center margin-top">
-            <button mat-raised-button type="submit" color="primary">Login</button>
-        </div>
-       
-        <span class="text center margin-top">New to our platform? &nbsp;<a routerLink="/sign-up" class="login-anchor">Sign up</a></span>
-    </form>
+<ng-container *transloco="let text;">
+    <div class="form-container mat-elevation-z5">
+        <h1 class="text-center">{{text('login.title')}}</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <mat-form-field>
+                <input type="text" matInput placeholder="{{text('login.email')}}" formControlName="username">
+                <mat-error *ngIf="email?.errors?.['required']" >{{text('login.email_required')}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="password" matInput placeholder="{{text('login.password')}}" formControlName="password">
+                <mat-error *ngIf="password?.errors?.['required']">{{text('login.password_required')}}</mat-error>
+            </mat-form-field>
+            <div class="text-center margin-top">
+                <button mat-raised-button type="submit" color="primary">{{text('login.title')}}</button>
+            </div>
+           
+            <span class="text center margin-top">{{text('login.question')}} &nbsp;<a routerLink="/sign-up" class="login-anchor">{{text('header.btn-sign-up')}}</a></span>
+        </form>
+        
+    </div>
     
-</div>
+</ng-container>

@@ -1,0 +1,31 @@
+{
+    "header":{
+        "title":"Kontakt-App",
+        "btn-sign-up":"Anmelden",
+        "btn-add":"Kontakt hinzufügen",
+        "btn-logout":"Ausloggen"
+    },
+    "login":{
+
+        "title":"Einloggen",
+        "email":"email",
+        "password":"passwort",
+        "question":"Neu auf unserer Plattform?",
+        "name":"name",
+        "confirm_password":"Bestätige das Passwort",
+        "email_required":"Email ist erforderlich.",
+        "password_required":"Passwort ist erforderlich.",
+        "name_required":"name ist erforderlich.",
+        "confirm_password_required":"bestätigen Sie Ihr Passwort."
+    },
+    "add-edit":{
+        "title":"Kontakt hinzufügen",
+        "name":"Kontaktname",
+        "email":"email",
+        "phone_number":"Telefonnummer",
+        "btn-cancel":"stornieren",
+        "btn-add":"hinzufügen",
+        "btn-update":"Aktualisieren"
+    }
+    
+    }
