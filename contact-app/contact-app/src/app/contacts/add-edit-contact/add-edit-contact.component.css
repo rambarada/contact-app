@@ -1,0 +1,17 @@
+
+.margin-right{
+
+    margin-right: 20px;
+}
+.padding{
+    padding: 30px;
+}
+.space-between{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.space-between button{
+    flex: 1;
+    margin-right:10px;
+}

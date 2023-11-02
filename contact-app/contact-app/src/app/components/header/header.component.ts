@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddEditContactComponent } from '../add-edit-contact/add-edit-contact.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { AddEditContactComponent } from 'src/app/contacts/add-edit-contact/add-edit-contact.component';
 
 @Component({
   selector: 'app-header',

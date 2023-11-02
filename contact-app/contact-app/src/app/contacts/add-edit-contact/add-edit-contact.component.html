@@ -1,0 +1,41 @@
+<div class="padding">
+    <div mat-dialog-title>
+        <h1>Add Contact</h1>
+      </div>
+      <form [formGroup]="Contactform" (ngSubmit)="onSubmit()">
+        <div mat-dialog-content>
+          <p>
+            <mat-form-field>
+              <mat-label> Contact name</mat-label>
+              <input type="text" matInput formControlName="name" />
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <mat-label>email</mat-label>
+              <input type="email" matInput formControlName="email" />
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field>
+              <mat-label>Phone number</mat-label>
+              <input
+                matInput
+                type="tel"
+                placeholder="+961 38 333 333"
+                formControlName="phoneNumber"
+              />
+              <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+          </p>
+        </div>
+      
+        <div mat-dialog-actions class="action space-between">
+          <button mat-raised-button type="button" (click)="onCancel()" >Cancel</button>
+          <button mat-raised-button  color="primary" type="submit" [disabled]=" Contactform.untouched || (!Contactform.valid && Contactform.touched)">{{data ? 'Update' : 'Add' }}</button>
+        </div>
+      </form>
+      
+</div>

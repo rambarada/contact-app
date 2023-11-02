@@ -45,7 +45,10 @@ export class SignUpComponent implements OnInit {
     const {name,email,password} = this.signUpForm.value;
     this.authService.signUp(name,email,password).subscribe(()=>{
       alert('user register successfully!')
-      this.router.navigate(['/contacts']);
+      this.router.navigate(['/contactss']);
+    },
+    (err)=>{
+      this.router.navigate(['error']);
     })
   }
 
