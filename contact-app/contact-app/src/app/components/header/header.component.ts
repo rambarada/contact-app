@@ -26,7 +26,7 @@ export class HeaderComponent {
   }
   onChangeLang(){
 
-    console.log("active lang: ",this.translocoService.getActiveLang())
+    //console.log("active lang: ",this.translocoService.getActiveLang())
     this.translocoService.setActiveLang(this.translocoService.getActiveLang()=='de)'?'(en':'de)');
   }
 }

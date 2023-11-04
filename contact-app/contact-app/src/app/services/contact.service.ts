@@ -12,8 +12,8 @@ export class ContactService {
   }
   contactId:number = 3;
   contacts: Contact[]=[
-    {id:'1',name:'ram',email:'ram@gmail.com',phoneNumber:"71/123456"},
-    {id:'2',name:'adam',email:'adam@gmail.com',phoneNumber:"70/123456"}
+    {id:'1',name:'ram',email:'ram@gmail.com',phoneNumber:"71/123456",address:"beirut"},
+    {id:'2',name:'adam',email:'adam@gmail.com',phoneNumber:"70/123456",address:'istanbul'}
   ];
   private contactsSubject = new BehaviorSubject<Contact[]>(this.contacts);
   constructor() {}

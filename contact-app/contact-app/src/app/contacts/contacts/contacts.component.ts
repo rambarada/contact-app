@@ -18,7 +18,7 @@ export class ContactsComponent {
   dataSource:any = []
   //contacts:Contact[] = []
   contactsSub !: Subscription;
-  displayedColumns: string[] = [ 'name', 'email', 'phone number','action'];
+  displayedColumns: string[] = [ 'name', 'email', 'phone number','address','action'];
 
   constructor(private firestoreService : FirestoreService,private _dialog:MatDialog,private firestore : Firestore){}
 

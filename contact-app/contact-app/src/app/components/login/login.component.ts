@@ -20,7 +20,9 @@ export class LoginComponent implements OnInit {
 
       username: new FormControl("",[Validators.required,Validators.email]),
       password:new FormControl("",Validators.required)
-    })
+    });
+
+    this.loginForm.patchValue({username:"antony123@gmail.com",password:"Antony@123"});
   }
 
   onLogin(){

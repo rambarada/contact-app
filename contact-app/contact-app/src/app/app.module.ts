@@ -10,11 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AddEditContactComponent } from './components/add-edit-contact/add-edit-contact.component';
-import { ContactsComponent } from './components/contacts/contacts.component';
 import { MatTableModule } from '@angular/material/table';
 import { HeaderComponent } from './components/header/header.component';
-import { DataTableComponent } from './components/data-table/data-table.component';
 import { environment } from 'src/environment.ts/environments';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideFirebaseApp,initializeApp } from '@angular/fire/app';
@@ -29,9 +26,6 @@ import { TranslocoRootModule } from './transloco-root.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    AddEditContactComponent,
-    ContactsComponent,
-    DataTableComponent,
     LoginComponent,
     SignUpComponent,
   ],

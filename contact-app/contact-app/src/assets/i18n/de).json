@@ -11,6 +11,7 @@
         "email":"email",
         "password":"passwort",
         "question":"Neu auf unserer Plattform?",
+        "address":"Adresse",
         "name":"name",
         "confirm_password":"Bestätige das Passwort",
         "email_required":"Email ist erforderlich.",

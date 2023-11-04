@@ -40,6 +40,7 @@ export class AddEditContactComponent {
           Validators.pattern(GlobalVariables.emailPattern),
         ]),
         phoneNumber: new FormControl('', Validators.required),
+        address: new FormControl('',Validators.required)
       });
       this.Contactform.patchValue(this.data);
     }

@@ -1,67 +1,77 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, doc,updateDoc,deleteDoc,addDoc } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  collectionData,
+  doc,
+  updateDoc,
+  deleteDoc,
+  addDoc,
+} from '@angular/fire/firestore';
 import { Contact } from '../models/contact.model';
-import { randEmail, randFullName,randPhoneNumber } from '@ngneat/falso';
-import {AngularFireAuth} from '@angular/fire/compat/auth'
+import {
+  randAddress,
+  randEmail,
+  randFullName,
+  randPhoneNumber,
+} from '@ngneat/falso';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Auth } from '@angular/fire/auth';
+import { ContactService } from './contact.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FirestoreService {
+  constructor(private firestore: Firestore, private auth: Auth) {}
 
-  constructor(private firestore : Firestore,private auth:Auth ) { }
-
-
-  getContacts(){
-
-    
-    const collectionInstance = collection(this.firestore,'contact');
-    return collectionData(collectionInstance,{idField:'id'});
-
+  getContacts() {
+    const collectionInstance = collection(this.firestore, 'contact');
+    return collectionData(collectionInstance, { idField: 'id' });
   }
 
-  updateContact(contact:Contact){
-
-    const docInstance = doc(this.firestore,'contact',contact.id);
+  updateContact(contact: Contact) {
+    const docInstance = doc(this.firestore, 'contact', contact.id);
     const updateData = {
-      id:contact.id,
+      id: contact.id,
       name: contact.name,
-      email:contact.email,
-      phoneNumber:contact.phoneNumber
+      email: contact.email,
+      phoneNumber: contact.phoneNumber,
+      address: contact.address,
     };
-    updateDoc(docInstance,updateData).then(()=>{
-
-      console.log("data updated successfully!")
-    }).catch((err)=>{
-      console.log("there was an error", err);
-    })
+    updateDoc(docInstance, updateData)
+      .then(() => {
+        console.log('data updated successfully!');
+      })
+      .catch((err) => {
+        console.log('there was an error', err);
+      });
   }
-  deleteContact(id:string){
-
-    const docInstance = doc(this.firestore,'contact',id);
+  deleteContact(id: string) {
+    const docInstance = doc(this.firestore, 'contact', id);
     deleteDoc(docInstance);
-
   }
-  createContact(contact:Contact){
-    
-    const collectionInstance = collection(this.firestore,'contact');
+  createContact(contact: Contact) {
+    const collectionInstance = collection(this.firestore, 'contact');
     const newContact = {
       name: contact.name,
       email: contact.email,
-      phoneNumber : contact.phoneNumber
-    }
-    addDoc(collectionInstance,newContact);
+      phoneNumber: contact.phoneNumber,
+      address: contact.address,
+    };
+    addDoc(collectionInstance, newContact);
   }
 
-  createRandomContacts(){
-
-    const collectionInstance = collection(this.firestore,'contact');
-    for(var i =0; i<2; i++){
-      const contact = { email: randEmail(), name: randFullName(),phoneNumber:randPhoneNumber({ countryCode: 'LB' }) };
-      addDoc(collectionInstance,contact);
+  createRandomContacts() {
+    const collectionInstance = collection(this.firestore, 'contact');
+    for (var i = 0; i < 2; i++) {
+      const contact = {
+        email: randEmail(),
+        name: randFullName(),
+        phoneNumber: randPhoneNumber({ countryCode: 'LB' }),
+        address: randAddress().country,
+      };
+      addDoc(collectionInstance, contact);
     }
-    
   }
- 
 }

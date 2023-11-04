@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { ContactsComponent } from './components/contacts/contacts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-up', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  {path:'contacts',component:ContactsComponent},
   {
     path: 'contactss',
     loadChildren: () =>
