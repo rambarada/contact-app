@@ -27,6 +27,10 @@
         "btn-cancel":"stornieren",
         "btn-add":"hinzufügen",
         "btn-update":"Aktualisieren"
+    },
+    "contacts":{
+        "export-pdf":"Kontakte exportieren"
     }
+    
     
     }

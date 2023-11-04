@@ -28,6 +28,9 @@
     "btn-cancel":"cancel",
     "btn-add":"add",
     "btn-update":"Update"
+},
+"contacts":{
+    "export-pdf":"export Contacts"
 }
 
 

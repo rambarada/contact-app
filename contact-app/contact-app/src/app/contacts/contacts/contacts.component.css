@@ -20,3 +20,13 @@ table {
   .padding-table{
     padding:32px;
   }
+
+  .d-flex-row{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .filter-input{
+
+    width: 50%;
+  }

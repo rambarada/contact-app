@@ -1,9 +1,12 @@
 <div class="d-flex padding-table">
-    <mat-form-field>
+  <div class="d-flex-row">
+    <mat-form-field class="filter-input">
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="by id, name, email or phone number." #input>
     </mat-form-field>
-    
+      <router-outlet></router-outlet>
+  </div>
+         
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 data-table">
     
       <!-- Position Column -->
@@ -56,4 +59,3 @@
   </table>
   
   </div>
-  

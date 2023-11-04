@@ -11,13 +11,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslocoRootModule } from '../transloco-root.module';
+import { PdfmakerComponent } from '../components/pdfmaker/pdfmaker.component';
 
 
 
 @NgModule({
   declarations: [
     ContactsComponent,
-    AddEditContactComponent
+    AddEditContactComponent,
+    PdfmakerComponent
   ],
   imports: [
     CommonModule,

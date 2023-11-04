@@ -1,0 +1,6 @@
+<ng-container *transloco="let text;">
+    
+<button mat-flat-button (click)="generatePDF()" color="primary" class="margin-top">
+    <mat-icon matSuffix>download</mat-icon>
+    {{text('contacts.export-pdf')}}</button>
+</ng-container>

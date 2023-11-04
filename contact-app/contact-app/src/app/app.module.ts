@@ -28,6 +28,7 @@ import { TranslocoRootModule } from './transloco-root.module';
     HeaderComponent,
     LoginComponent,
     SignUpComponent,
+
   ],
   imports: [
     BrowserModule,
